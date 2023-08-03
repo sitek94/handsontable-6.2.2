@@ -1,0 +1,45 @@
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0;
+  padding: 1rem;
+}
+
+.root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+header {
+  display: flex;
+  gap: 0.25rem;
+}
+
+header button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+}
+
+.table .invalid-cell {
+    background-color: #ffcccc;
+}
+
+.modeling {
+  height: 100%;
+  display: flex;
+}
+
+.inspector {
+  width: 300px;
+  height: 100%;
+}
+
+.diagram {
+  height: 100%;
+  width: 100%;
+}
