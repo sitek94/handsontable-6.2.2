@@ -1,27 +1,26 @@
 import {Link} from 'react-router-dom'
+import packageJson from '../package.json'
+import {getTitleFromPath} from './utils'
 
-export default function Home({links}: {links: string[]}) {
+export default function Home({paths}: {paths: string[]}) {
   return (
-    <nav>
+    <div
+      style={{
+        maxWidth: '65ch',
+        margin: '80px auto',
+        fontSize: '2rem',
+      }}
+    >
+      <h1>{packageJson.name}</h1>
+      <hr />
       <h2>Examples</h2>
       <ul>
-        {links.map(link => (
-          <li key={link}>
-            <Link to={link}>{formatLink(link)}</Link>
+        {paths.map(path => (
+          <li key={path}>
+            <Link to={path}>{getTitleFromPath(path)}</Link>
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
   )
-}
-
-function formatLink(path: string) {
-  const fileName = path.replace('/examples/', '').replace('.tsx', '')
-  const parts = fileName.split('-')
-
-  return parts.map(capitalize).join(' ')
-}
-
-function capitalize(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1)
 }

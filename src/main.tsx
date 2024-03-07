@@ -1,13 +1,10 @@
 import * as ReactDOM from 'react-dom/client'
-import {
-  createBrowserRouter,
-  Link,
-  Outlet,
-  RouterProvider,
-} from 'react-router-dom'
+import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom'
 
 import './style.css'
 import Home from './home.tsx'
+import {Nav} from './components.tsx'
+import {getTitleFromPath} from './utils.ts'
 
 init()
 
@@ -25,16 +22,16 @@ async function createRouter() {
   return createBrowserRouter([
     {
       path: '/',
-      element: <Home links={examplesRoutes.map(({path}) => path)} />,
+      element: <Home paths={examplesRoutes.map(({path}) => path)} />,
     },
     {
       path: '/examples',
       Component: () => (
         <>
-          <nav>
-            <Link to="/">Go back</Link>
-          </nav>
-          <Outlet />
+          <Nav />
+          <main>
+            <Outlet />
+          </main>
         </>
       ),
       children: examplesRoutes,
@@ -49,14 +46,25 @@ async function getExamplesRoutes() {
     () => Promise<{default: () => JSX.Element}>
   >
 
-  const routes: {path: string; Component: () => JSX.Element}[] = []
+  const routes: {
+    path: string
+    title: string
+    Component: () => JSX.Element
+  }[] = []
 
   for (const route of Object.keys(examplesImports)) {
     const path = route.replace('./', '/').replace('.tsx', '')
+    const title = getTitleFromPath(path)
 
     const {default: Component} = await examplesImports[route]()
 
-    routes.push({path, Component})
+    console.log({title, path, Component})
+
+    routes.push({
+      title,
+      path,
+      Component: () => <Component />,
+    })
   }
 
   return routes

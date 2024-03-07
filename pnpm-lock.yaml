@@ -4,21 +4,13 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  handsontable@6.2.2:
-    hash: impeyvuiu7iyvjatndau3o6ol4
-    path: patches/handsontable@6.2.2.patch
-
 dependencies:
   '@handsontable/react':
     specifier: 5.0.0
     version: 5.0.0(handsontable@6.2.2)
-  gojs:
-    specifier: ^2.3.9
-    version: 2.3.9
   handsontable:
     specifier: 6.2.2
-    version: 6.2.2(patch_hash=impeyvuiu7iyvjatndau3o6ol4)
+    version: 6.2.2
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -28,9 +20,6 @@ dependencies:
   react-router-dom:
     specifier: ^6.14.2
     version: 6.14.2(react-dom@18.2.0)(react@18.2.0)
-  setimmediate:
-    specifier: ^1.0.5
-    version: 1.0.5
 
 devDependencies:
   '@types/react':
@@ -546,7 +535,7 @@ packages:
     peerDependencies:
       handsontable: '>=8.0.0'
     dependencies:
-      handsontable: 6.2.2(patch_hash=impeyvuiu7iyvjatndau3o6ol4)
+      handsontable: 6.2.2
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -863,8 +852,8 @@ packages:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
 
-  /bignumber.js@8.1.1:
-    resolution: {integrity: sha512-QD46ppGintwPGuL1KqmwhR0O+N2cZUg8JG/VzwI2e28sM9TqHjQB10lI4QAaMHVbLzwVLLAwEglpKPViWX+5NQ==}
+  /bignumber.js@9.1.2:
+    resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
     dev: false
 
   /brace-expansion@1.1.11:
@@ -1314,10 +1303,6 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
-  /gojs@2.3.9:
-    resolution: {integrity: sha512-yF0N0f4XmQahaLnS0iAcURlU+NZUBgrB17v9ZHQHdbhMch5yIUa1j8y7AGO+zoD02kpVMsWh14kDc1doQp4GtQ==}
-    dev: false
-
   /grapheme-splitter@1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
@@ -1326,14 +1311,13 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
-  /handsontable@6.2.2(patch_hash=impeyvuiu7iyvjatndau3o6ol4):
+  /handsontable@6.2.2:
     resolution: {integrity: sha512-Z/sQa51OMHH4RoeBJeANYJMJYmx5SR+/xP8JCh5mzKJnAMKoQWF1zONPNgNCFZ/LdKFmI0f34XKtU0GHW0MG/Q==}
     dependencies:
       moment: 2.20.1
-      numbro: 2.3.6
+      numbro: 2.4.0
       pikaday: 1.5.1
     dev: false
-    patched: true
 
   /has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -1514,10 +1498,10 @@ packages:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
     dev: true
 
-  /numbro@2.3.6:
-    resolution: {integrity: sha512-pxpoTT3hVxQGaOA2RTzXR/muonQNd1K1HPJbWo7QOmxPwiPmoFCFfsG9XXgW3uqjyzezJ0P9IvCPDXUtJexjwg==}
+  /numbro@2.4.0:
+    resolution: {integrity: sha512-t6rVkO1CcKvffvOJJu/zMo70VIcQSR6w3AmIhfHGvmk4vHbNe6zHgomB0aWFAPZWM9JBVWBM0efJv9DBiRoSTA==}
     dependencies:
-      bignumber.js: 8.1.1
+      bignumber.js: 9.1.2
     dev: false
 
   /once@1.4.0:
@@ -1717,10 +1701,6 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
-
-  /setimmediate@1.0.5:
-    resolution: {integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==}
-    dev: false
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
