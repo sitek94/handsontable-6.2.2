@@ -23,7 +23,8 @@
     /* Import aliases */
     "baseUrl": "./src",
     "paths": {
-      "~/*": ["*"]
+      "~/*": ["*"],
+      "@babel/polyfill/lib/noConflict": ["src/noop"]
     }
   },
   "include": ["src"],

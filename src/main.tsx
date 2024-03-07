@@ -2,6 +2,7 @@ import * as ReactDOM from 'react-dom/client'
 import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom'
 
 import './style.css'
+import 'handsontable/dist/handsontable.full.css'
 import Home from './home.tsx'
 import {Nav} from './components.tsx'
 import {getTitleFromPath} from './utils.ts'

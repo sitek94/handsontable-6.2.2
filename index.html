@@ -11,6 +11,12 @@
   </head>
   <body>
     <div id="root" class="root"></div>
+    <script>
+      // Polyfill for `setImmediate` in Handsontable@6.2.2
+      window.setImmediate = callback => {
+        setTimeout(callback, 0)
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
