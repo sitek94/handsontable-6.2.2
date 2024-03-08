@@ -1,11 +1,17 @@
 import * as ReactDOM from 'react-dom/client'
-import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom'
+import {
+  createBrowserRouter,
+  Link,
+  Outlet,
+  RouterProvider,
+  useLocation,
+} from 'react-router-dom'
 
-import './style.css'
 import 'handsontable/dist/handsontable.full.css'
-import Home from './home.tsx'
-import {Nav} from './components.tsx'
-import {getTitleFromPath} from './utils.ts'
+import './index.css'
+
+import {getTitleFromPath} from './utils/get-title-from-path'
+import Home from './routes/index.tsx'
 
 init()
 
@@ -42,7 +48,7 @@ async function createRouter() {
 
 async function getExamplesRoutes() {
   // eslint-disable-next-line react-refresh/only-export-components
-  const examplesImports = import.meta.glob('./examples/*.tsx') as Record<
+  const examplesImports = import.meta.glob('./routes/examples/*.tsx') as Record<
     string,
     () => Promise<{default: () => JSX.Element}>
   >
@@ -54,7 +60,7 @@ async function getExamplesRoutes() {
   }[] = []
 
   for (const route of Object.keys(examplesImports)) {
-    const path = route.replace('./', '/').replace('.tsx', '')
+    const path = route.replace('./routes/', '/').replace('.tsx', '')
     const title = getTitleFromPath(path)
 
     const {default: Component} = await examplesImports[route]()
@@ -69,4 +75,17 @@ async function getExamplesRoutes() {
   }
 
   return routes
+}
+
+// eslint-disable-next-line react-refresh/only-export-components -- we don't really care about fast refresh in this file
+function Nav() {
+  const location = useLocation()
+  const title = getTitleFromPath(location.pathname)
+
+  return (
+    <nav>
+      <Link to="/">Go back</Link>
+      <h1>{title}</h1>
+    </nav>
+  )
 }

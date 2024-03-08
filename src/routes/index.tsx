@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
-import packageJson from '../package.json'
-import {getTitleFromPath} from './utils'
+import packageJson from '../../package.json'
+import {getTitleFromPath} from '../utils/get-title-from-path'
 
 export default function Home({paths}: {paths: string[]}) {
   return (
