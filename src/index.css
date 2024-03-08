@@ -10,6 +10,8 @@ body {
 }
 
 nav {
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   position: fixed;
   top: 0;
   left: 0;

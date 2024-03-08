@@ -1,22 +1,33 @@
 import {HotTable} from '@handsontable/react'
 
-export default function LoadingHugeExcel() {
-  const data = [
-    ['', 'Ford', 'Volvo', 'Toyota', 'Honda'],
-    ['2016', 10, 11, 12, 13],
-    ['2017', 20, 11, 14, 13],
-    ['2018', 30, 15, 12, 13],
-  ]
+const numberOfRows = 1000
 
+const columns = [
+  'id',
+  'first_name',
+  'last_name',
+  'email',
+  'gender',
+  'ip_address',
+]
+const data = Array.from({length: numberOfRows})
+  .map(() => ``)
+  .map(() => columns.map(j => ``))
+
+export default function LoadingHugeExcel() {
   return (
     <>
-      <div id="hot-app">
+      <div
+        id="hot-app"
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+      >
         <HotTable
           data={data}
-          colHeaders={true}
+          colHeaders={columns}
           rowHeaders={true}
-          width={600}
-          height={300}
           stretchH="all"
         />
       </div>

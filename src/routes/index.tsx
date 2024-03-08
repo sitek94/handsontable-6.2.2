@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import packageJson from '../../package.json'
-import {getTitleFromPath} from '../utils/get-title-from-path'
+
+import {getTitleFromPath} from '~/utils/get-title-from-path'
 
 export default function Home({paths}: {paths: string[]}) {
   return (
@@ -20,6 +21,13 @@ export default function Home({paths}: {paths: string[]}) {
             <Link to={path}>{getTitleFromPath(path)}</Link>
           </li>
         ))}
+      </ul>
+      <hr />
+      <h2>Tools</h2>
+      <ul>
+        <li>
+          <Link to="/generator">Data Generator</Link>
+        </li>
       </ul>
     </div>
   )

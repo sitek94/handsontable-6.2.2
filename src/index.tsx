@@ -10,8 +10,9 @@ import {
 import 'handsontable/dist/handsontable.full.css'
 import './index.css'
 
-import {getTitleFromPath} from './utils/get-title-from-path'
-import Home from './routes/index.tsx'
+import {getTitleFromPath} from '~/utils/get-title-from-path'
+import Home from '~/routes/index.tsx'
+import Generator from '~/routes/generator.tsx'
 
 init()
 
@@ -30,6 +31,10 @@ async function createRouter() {
     {
       path: '/',
       element: <Home paths={examplesRoutes.map(({path}) => path)} />,
+    },
+    {
+      path: '/generator',
+      element: <Generator />,
     },
     {
       path: '/examples',
@@ -86,6 +91,25 @@ function Nav() {
     <nav>
       <Link to="/">Go back</Link>
       <h1>{title}</h1>
+      <div>
+        <button
+          onClick={() => {
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth' as const,
+            })
+          }}
+        >
+          Scroll to bottom
+        </button>
+        <button
+          onClick={() => {
+            window.scrollTo({top: 0, behavior: 'smooth' as const})
+          }}
+        >
+          Back to top
+        </button>
+      </div>
     </nav>
   )
 }
