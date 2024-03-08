@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   resolve: {
     alias: {
-      '@babel/polyfill/lib/noConflict': './src/noop.ts',
+      '@babel/polyfill/lib/noConflict': './src/utils/noop.ts',
     },
   },
 })
