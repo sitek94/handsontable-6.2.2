@@ -22,13 +22,6 @@ export default function Home({paths}: {paths: string[]}) {
           </li>
         ))}
       </ul>
-      <hr />
-      <h2>Tools</h2>
-      <ul>
-        <li>
-          <Link to="/generator">Data Generator</Link>
-        </li>
-      </ul>
     </div>
   )
 }

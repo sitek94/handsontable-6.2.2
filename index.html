@@ -16,6 +16,7 @@
       window.setImmediate = callback => {
         setTimeout(callback, 0)
       }
+      window.clearImmediate = clearTimeout
     </script>
     <script type="module" src="/src/index.tsx"></script>
   </body>

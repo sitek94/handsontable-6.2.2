@@ -1,18 +1,11 @@
 import * as ReactDOM from 'react-dom/client'
-import {
-  createBrowserRouter,
-  Link,
-  Outlet,
-  RouterProvider,
-  useLocation,
-} from 'react-router-dom'
+import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom'
 
 import 'handsontable/dist/handsontable.full.css'
 import './index.css'
 
 import {getTitleFromPath} from '~/utils/get-title-from-path'
 import Home from '~/routes/index.tsx'
-import Generator from '~/routes/generator.tsx'
 
 init()
 
@@ -33,17 +26,10 @@ async function createRouter() {
       element: <Home paths={examplesRoutes.map(({path}) => path)} />,
     },
     {
-      path: '/generator',
-      element: <Generator />,
-    },
-    {
       path: '/examples',
       Component: () => (
         <>
-          <Nav />
-          <main>
-            <Outlet />
-          </main>
+          <Outlet />
         </>
       ),
       children: examplesRoutes,
@@ -70,8 +56,6 @@ async function getExamplesRoutes() {
 
     const {default: Component} = await examplesImports[route]()
 
-    console.log({title, path, Component})
-
     routes.push({
       title,
       path,
@@ -80,36 +64,4 @@ async function getExamplesRoutes() {
   }
 
   return routes
-}
-
-// eslint-disable-next-line react-refresh/only-export-components -- we don't really care about fast refresh in this file
-function Nav() {
-  const location = useLocation()
-  const title = getTitleFromPath(location.pathname)
-
-  return (
-    <nav>
-      <Link to="/">Go back</Link>
-      <h1>{title}</h1>
-      <div>
-        <button
-          onClick={() => {
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: 'smooth' as const,
-            })
-          }}
-        >
-          Scroll to bottom
-        </button>
-        <button
-          onClick={() => {
-            window.scrollTo({top: 0, behavior: 'smooth' as const})
-          }}
-        >
-          Back to top
-        </button>
-      </div>
-    </nav>
-  )
 }
