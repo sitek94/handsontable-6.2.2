@@ -1,5 +1,11 @@
+import packageJson from '../../package.json'
+
 export function getTitleFromPath(path: string) {
-  const fileName = path.replace('/examples/', '').replace('.tsx', '')
+  const fileName = path
+    .replace('/examples/', '')
+    .replace(`/${packageJson.name}`, '')
+    .replace('.tsx', '')
+
   const parts = fileName.split('-')
 
   return parts.map(capitalize).join(' ')

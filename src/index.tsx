@@ -4,8 +4,9 @@ import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom'
 import 'handsontable/dist/handsontable.full.css'
 import './index.css'
 
-import {getTitleFromPath} from '~/utils/get-title-from-path'
+import packageJson from '../package.json'
 import Home from '~/routes/index.tsx'
+import {getTitleFromPath} from '~/utils/get-title-from-path'
 
 init()
 
@@ -22,11 +23,11 @@ async function createRouter() {
 
   return createBrowserRouter([
     {
-      path: '/',
+      path: getPath('/'),
       element: <Home paths={examplesRoutes.map(({path}) => path)} />,
     },
     {
-      path: '/examples',
+      path: getPath('/examples'),
       Component: () => (
         <>
           <Outlet />
@@ -58,10 +59,19 @@ async function getExamplesRoutes() {
 
     routes.push({
       title,
-      path,
+      path: getPath(path),
       Component: () => <Component />,
     })
   }
 
   return routes
+}
+
+function getPath(path: string) {
+  if (process.env.NODE_ENV === 'production') {
+    const basePath = `/${packageJson.name}`
+    return `${basePath}${path}`
+  }
+
+  return path
 }
